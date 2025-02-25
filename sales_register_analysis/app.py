@@ -19,7 +19,7 @@ def load_data(file_path):
         st.error(f"An error occurred: {e}")
         return None
 
-st.title("Sales Register Analysis (with SA 520 Procedures)")
+st.title("Sales Register Analysis with Sample Selection")
 
 # --- File Upload ---
 st.sidebar.header("Data Upload")
