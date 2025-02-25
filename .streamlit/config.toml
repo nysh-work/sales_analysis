@@ -1,0 +1,33 @@
+[theme]
+# Primary accent color (similar to Claude's purple accent)
+primaryColor = "#6B46C1"
+
+# Background color for the main content area (clean white like Claude)
+backgroundColor = "#FFFFFF"
+
+# Background color used for the sidebar (light gray)
+secondaryBackgroundColor = "#F7FAFC"
+
+# Color used for almost all text (dark, but not pure black)
+textColor = "#1A202C"
+
+# Font family for all text in the app, except code blocks
+# Using a system font stack similar to Claude's clean typography
+font = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+
+[server]
+# Enable watchdog to automatically restart when files change
+enableWatchdogWarning = false
+
+[browser]
+# Whether to open the browser automatically when the server starts
+# gatherUsageStats = false
+
+[deprecation]
+# Disable the warning for deprecated Streamlit commands
+showfileUploaderEncoding = false
+showPyplotGlobalUse = false
+
+[logger]
+# Log level for server-level logs
+level = "info"
