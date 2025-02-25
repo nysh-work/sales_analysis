@@ -12,8 +12,11 @@ COPY . .
 # Install the application in development mode
 RUN pip install -e .
 
-# Expose the port Streamlit will run on
-EXPOSE 8501
+# Set environment variable that Cloud Run will use
+ENV PORT 8080
 
-# Command to run the application
-CMD ["streamlit", "run", "sales_register_analysis/app.py", "--server.address=0.0.0.0"]
+# Command to run the application (note the port setting)
+CMD ["streamlit", "run", "sales_register_analysis/app.py", "--server.port=$PORT", "--server.address=0.0.0.0"]
+
+# The container must listen on the port specified by the PORT environment variable
+EXPOSE $PORT
