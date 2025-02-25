@@ -12,15 +12,14 @@ COPY . .
 # Install the application in development mode
 RUN pip install -e .
 
-# Create and make the startup script executable
-RUN echo '#!/bin/bash\nstreamlit run sales_register_analysis/app.py --server.port=$PORT --server.address=0.0.0.0' > /app/start.sh
-RUN chmod +x /app/start.sh
+# Make the startup script executable
+RUN chmod +x start.sh
 
 # Set environment variable that Cloud Run will use
 ENV PORT 8080
 
-# The container must listen on the port specified by the PORT environment variable
+# Expose the port
 EXPOSE 8080
 
-# Use the shell form to allow environment variable substitution
-CMD /app/start.sh
+# Use the shell script that properly expands environment variables
+CMD ["/bin/bash", "start.sh"]
