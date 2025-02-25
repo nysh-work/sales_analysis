@@ -6,20 +6,18 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy startup script first and make it executable
+COPY start.sh .
+RUN chmod +x start.sh
+
 # Copy the rest of the application
 COPY . .
 
 # Install the application in development mode
 RUN pip install -e .
 
-# Make the startup script executable
-RUN chmod +x start.sh
-
-# Set environment variable that Cloud Run will use
+# Set environment variable for local testing
 ENV PORT 8080
 
-# Expose the port
-EXPOSE 8080
-
-# Use the shell script that properly expands environment variables
-CMD ["/bin/bash", "start.sh"]
+# Use shell script to start the application
+CMD ["/app/start.sh"]
